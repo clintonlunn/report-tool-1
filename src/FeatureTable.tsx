@@ -6,9 +6,14 @@ interface FeatureTableProps extends __esri.FeatureTableProperties {
     event: __esri.FeatureTableSelectionChangeEvent,
     selectedRows: __esri.Graphic[]
   ) => void;
+  singleSelectEnabled?: boolean;
 }
 
-const FeatureTable = ({ onSelectionChange, ...props }: FeatureTableProps) => {
+const FeatureTable = ({
+  onSelectionChange,
+  singleSelectEnabled,
+  ...props
+}: FeatureTableProps) => {
   const tableRef = useRef<HTMLDivElement>(null);
   const [selectionChangeEvent, setSelectionChangeEvent] =
     useState<__esri.FeatureTableSelectionChangeEvent>();
@@ -27,6 +32,17 @@ const FeatureTable = ({ onSelectionChange, ...props }: FeatureTableProps) => {
         featureTable as any
       ).grid.selectedItems._items.map((item: any) => item.feature);
       setSelectedRows(newSelectedRows);
+
+      if (singleSelectEnabled && event.added.length > 0) {
+        const selectedObjectIds = (
+          featureTable as any
+        ).grid.selectedItems.items.map((item: any) => item.objectId);
+        featureTable.deselectRows(
+          selectedObjectIds.filter(
+            (id: number) => id !== (event.added[0] as any).objectId
+          )
+        );
+      }
     });
   }, []);
 

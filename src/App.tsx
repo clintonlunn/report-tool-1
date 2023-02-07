@@ -31,6 +31,7 @@ function App() {
           view={view}
           highlightOnRowSelectEnabled={false}
           onSelectionChange={handleSelectionChange}
+          singleSelectEnabled={true}
         />
       </div>
     </div>
