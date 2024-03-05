@@ -19,7 +19,7 @@ interface VisualAssets {
 
 interface HazardMapProps {
   aoi: PolygonType;
-  queriesWithResults: Array<[string, string]>;
+  queriesWithResults: string[][];
   children?: ReactNode;
 }
 
@@ -84,7 +84,7 @@ const HazardMap: FC<HazardMapProps> = ({ aoi, queriesWithResults, children }) =>
       ui: {
         components: ['attribution']
       },
-      extent: extentClone.expand(.5),
+      extent: extentClone.expand(3),
       graphics: [polylineGraphic],
       constraints: {
         snapToZoom: false

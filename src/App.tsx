@@ -36,18 +36,18 @@ console.log(`using web map: ${config.webMaps.hazard}`);
 function App(props: Aoi) {
   const [groupToHazardMap, setGroupToHazardMap] = useState({});
   const [hazardToUnitMap, setHazardToUnitMap] = useState({});
-  const [hazardIntroText, setHazardIntroText] = useState();
-  const [hazardReferences, setHazardReferences] = useState();
-  const [queriesWithResults, setQueriesWithResults] = useState([]);
-  const [groupToTextMap, setGroupToTextMap] = useState([]);
+  const [hazardIntroText, setHazardIntroText] = useState({});
+  const [hazardReferences, setHazardReferences] = useState({});
+  const [queriesWithResults, setQueriesWithResults] = useState<string[][]>([]);
+  const [groupToTextMap, setGroupToTextMap] = useState({});
   const [reportTextMap, setReportTextMap] = useState({});
   const [otherDataMap, setOtherDataMap] = useState({});
   // const [lidarFeatures, setLidarFeatures] = useState([]);
   // const [aerialFeatures, setAerialFeatures] = useState([]);
-  const [tasks, setTasks] = useState({});
+  const [tasks, setTasks] = useState<Record<string, boolean>>({});
   const [pageError, setError] = useState(false);
 
-  const registerProgressItem = useCallback((itemId) => {
+  const registerProgressItem = useCallback((itemId: string) => {
     console.log('registerProgressItem:', itemId);
 
     setTasks(previousTasks => {
@@ -61,7 +61,7 @@ function App(props: Aoi) {
       };
     });
   }, []);
-  const setProgressItemAsComplete = useCallback(itemId => {
+  const setProgressItemAsComplete = useCallback((itemId: string) => {
     setTasks(previousTasks => {
       return {
         ...previousTasks,
@@ -78,19 +78,23 @@ function App(props: Aoi) {
       registerProgressItem(relatedTablesProgressId);
 
       const allHazardInfos = await Promise.all(config.queries.map(featureClassMap => {
-        registerProgressItem(featureClassMap);
+        // join together to make a unique id for this feature class
+        const joinedFeatureClass = featureClassMap.join('_');
+
+        registerProgressItem(joinedFeatureClass);
 
         return queryUnitsAsync(featureClassMap, props.polygon).then(data => {
-          setProgressItemAsComplete(featureClassMap);
+          setProgressItemAsComplete(joinedFeatureClass);
 
           return data;
         });
       }));
 
-      console.log('queried all units');
+      console.log('allHazardInfos', allHazardInfos);
+      const typedHazardInfos = allHazardInfos as { units: string[], hazard: string, url: string }[];
 
-      const hazardInfos = allHazardInfos.filter(({ units }) => units.length > 0);
-      const flatUnitCodes = Array.from(new Set(hazardInfos.reduce((previous, { units }) => previous.concat(units), [])));
+      const hazardInfos = typedHazardInfos.filter(({ units }) => units.length > 0);
+      const flatUnitCodes = Array.from(new Set(hazardInfos.reduce((previous: string[], { units }) => previous.concat(units), [])));
       setQueriesWithResults(hazardInfos.map(info => [info.url, info.hazard]));
 
       // these queries can be done simultaneously
@@ -115,13 +119,13 @@ function App(props: Aoi) {
       ]);
       setProgressItemAsComplete(relatedTablesProgressId);
 
-      const otherDataMapBuilder = {};
+      const otherDataMapBuilder: { [key: string]: any } = {};
       otherDataRows.forEach(row => {
         otherDataMapBuilder[row.Data] = row;
       });
       setOtherDataMap(otherDataMapBuilder);
 
-      const reportTextMapBuilder = {};
+      const reportTextMapBuilder: { [key: string]: any } = {};
       reportTextRows.forEach(({ Section, Text }) => {
         reportTextMapBuilder[Section] = Text;
       });
@@ -130,8 +134,8 @@ function App(props: Aoi) {
       const flatGroups = Array.from(new Set(groupings.map(({ HazardGroup }) => HazardGroup)));
       const groupText = await queryGroupTextAsync(flatGroups);
 
-      const groupToTextMapBuilder = {};
-      const groupToHazardMapBuilder = {};
+      const groupToTextMapBuilder: { [key: string]: any } = {};
+      const groupToHazardMapBuilder: { [key: string]: any } = {};
       groupText.forEach(({ HazardGroup, Text }) => {
         groupToTextMapBuilder[HazardGroup] = Text;
 
@@ -139,7 +143,7 @@ function App(props: Aoi) {
         groupToHazardMapBuilder[HazardGroup] = [];
       });
 
-      const hazardToUnitMapBuilder = {};
+      const hazardToUnitMapBuilder: { [key: string]: any[] } = {};
       hazardUnitText.forEach(({ HazardUnit, HazardName, HowToUse, Description, UnitName }) => {
         const hazardCode = getHazardCodeFromUnitCode(HazardUnit);
 
@@ -168,6 +172,8 @@ function App(props: Aoi) {
       });
     }
   }, [props.polygon, registerProgressItem, setProgressItemAsComplete]);
+  console.log('description', props.description);
+
 
   return (!pageError ? <>
     <ProgressContext.Provider value={{ registerProgressItem, setProgressItemAsComplete }}>
@@ -178,7 +184,8 @@ function App(props: Aoi) {
       </ProgressBar>
       <div className="app__container">
         <HazardMap aoi={props.polygon} queriesWithResults={queriesWithResults}>
-          <CoverPage aoiDescription={props.description} {...reportTextMap} />
+          {/* <CoverPage aoiDescription={props.description} {...reportTextMap} /> */}
+          <CoverPage {...reportTextMap} />
           <SummaryPage {...reportTextMap}
             hazardToUnitMap={hazardToUnitMap}
             // aerialFeatures={aerialFeatures}
@@ -210,7 +217,7 @@ function App(props: Aoi) {
         <div className="header page-break">
           <h1>OTHER GEOLOGIC HAZARD RESOURCES</h1>
           <p dangerouslySetInnerHTML={{ __html: reportTextMap.OtherGeologicHazardResources }}
-            title={config.notProd && 'ReportTextTable.Text(OtherGeologicHazardResources)'}></p>
+            title={config.notProd ? 'ReportTextTable.Text(OtherGeologicHazardResources)' : undefined}></p>
         </div>
       </div>
     </ProgressContext.Provider>

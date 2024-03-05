@@ -2,7 +2,7 @@ import { FC } from 'react';
 import './ErrorPage.scss';
 
 interface ErrorPageProps {
-  error: Error;
+  error: boolean;
 }
 
 const ErrorPage: FC<ErrorPageProps> = ({ error }) => {

@@ -37,7 +37,7 @@ export interface AreaOfInterest {
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-const fetchWithRetry = async (url: string, outputFormatter: (response: JsonResponse) => unknown) => {
+const fetchWithRetry = async <T>(url: string, outputFormatter: (response: JsonResponse) => T): Promise<T> => {
     // fetch 3 times with 1 second delay
     for (let i = 0; i < 3; i++) {
         try {
@@ -68,17 +68,23 @@ const fetchWithRetry = async (url: string, outputFormatter: (response: JsonRespo
             await delay(1000);
         }
     }
+
+    throw new Error('fetchWithRetry failed');
 }
 
-const retryPolicy = (url: string, outputFormatter: (response: JsonResponse) => unknown = response => response) => {
-    return new Promise((resolve, reject) => {
-        fetchWithRetry(url, outputFormatter)
-            .then(resolve)
-            .catch(reject);
-    });
+// const retryPolicy = <T>(url: string, outputFormatter: (response: JsonResponse) => T = response => response as unknown as T): Promise<T> => {
+//     return new Promise<T>((resolve: (value?: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => {
+//         fetchWithRetry(url, outputFormatter)
+//             .then(resolve)
+//             .catch(reject);
+//     });
+// }
+
+const retryPolicy = <T>(url: string, outputFormatter: (response: JsonResponse) => T = response => response as unknown as T): Promise<T> => {
+    return fetchWithRetry(url, outputFormatter);
 }
 
-export const queryUnitsAsync = async (meta: [string, string], aoi: AreaOfInterest) => {
+export const queryUnitsAsync = async (meta: string[], aoi: AreaOfInterest) => {
     console.log('QueryService.queryUnitsAsync');
 
     let [url, hazard] = meta
@@ -183,11 +189,14 @@ export const queryReportTextTableAsync = () => {
     return queryTable(config.urls.reportTextTable, where, outFields);
 };
 
-export const queryOtherDataTableAsync = () => {
+export const queryOtherDataTableAsync = async () => {
     console.log('QueryService.queryOtherDataTable');
 
     const where = '1=1';
     const outFields = 'Data,Introduction,HowToUse,References_';
+
+    console.log('asdf', await queryTable(config.urls.otherDataTable, where, outFields));
+
 
     return queryTable(config.urls.otherDataTable, where, outFields);
 };
