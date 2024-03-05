@@ -27,12 +27,13 @@ import ProgressBar from './reportParts/ProgressBar';
 // import AerialFeature from './reportParts/AerialFeature';
 import ErrorPage from './reportParts/ErrorPage';
 import { ProgressContext } from './contexts/ProgressContext';
+import { Aoi } from './types/types';
 
 
 // export const ProgressContext = createContext();
 console.log(`using web map: ${config.webMaps.hazard}`);
 
-function App(props) {
+function App(props: Aoi) {
   const [groupToHazardMap, setGroupToHazardMap] = useState({});
   const [hazardToUnitMap, setHazardToUnitMap] = useState({});
   const [hazardIntroText, setHazardIntroText] = useState();
@@ -46,7 +47,7 @@ function App(props) {
   const [tasks, setTasks] = useState({});
   const [pageError, setError] = useState(false);
 
-  const registerProgressItem = useCallback(itemId => {
+  const registerProgressItem = useCallback((itemId) => {
     setTasks(previousTasks => {
       if (previousTasks[itemId]) {
         throw Error(`${itemId} is already registered as a progress task!`);
