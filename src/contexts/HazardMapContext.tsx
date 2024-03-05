@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { VisualAssets } from '../types/types';
+import { VisualAssetsMap } from '../types/types';
 
 // interface VisualAssets {
 //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -12,4 +12,4 @@ import { VisualAssets } from '../types/types';
 //     visualAssets: {}
 // });
 
-export const HazardMapContext = createContext<VisualAssets | null>(null);
+export const HazardMapContext = createContext<Partial<VisualAssetsMap>>({});

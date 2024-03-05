@@ -9,7 +9,7 @@ export default {
         aerials: 'aerials-map'
     },
     scaleMultiple: 2500,
-    notProd: process.env.REACT_APP_ENVIRONMENT !== 'production',
+    notProd: import.meta.env.MODE !== 'production',
     urls: {
         baseUrl,
         hazardGroupingsTable: `${baseUrl}/Report_Tables_test_view/FeatureServer/0`,
@@ -53,7 +53,7 @@ export default {
         ['Utah_Earthquake_Hazards/FeatureServer/5', groundshakingHazardCode] // Groundshaking Polygons
     ],
     webMaps: {
-        hazard: (process.env.REACT_APP_ENVIRONMENT === 'dev') ?
+        hazard: (import.meta.env.MODE === 'development') ?
             // development
             //'eec57827136a472dbdb75535889d74b2' :
             //'a2d16377b4b5495ab2aaca8dd14463ba' :

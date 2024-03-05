@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
 import './index.scss'
-import { Aoi } from './types/types.js'
+import App from './App'
+import { Aoi } from './types/types'
+
 
 const init = (aoi: Aoi) => {
   ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-      <App />
+      <App {...aoi} />
     </React.StrictMode>,
   )
 }
@@ -15,8 +16,7 @@ const init = (aoi: Aoi) => {
 const aoi = localStorage.getItem('aoi')
 if (!aoi) {
   import('./testData.json').then((aoi) => {
-    console.log(aoi);
-
+    console.log('using test data', aoi.default)
     return init(aoi.default)
   })
 } else {
