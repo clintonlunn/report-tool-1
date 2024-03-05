@@ -48,6 +48,8 @@ function App(props: Aoi) {
   const [pageError, setError] = useState(false);
 
   const registerProgressItem = useCallback((itemId) => {
+    console.log('registerProgressItem:', itemId);
+
     setTasks(previousTasks => {
       if (previousTasks[itemId]) {
         throw Error(`${itemId} is already registered as a progress task!`);
