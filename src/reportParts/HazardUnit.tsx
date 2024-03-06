@@ -6,7 +6,6 @@ import config from '../config';
 import { getHazardCodeFromUnitCode } from '../util/util';
 import './HazardUnit.scss';
 import { HazardMapContext } from '../contexts/HazardMapContext';
-import { VisualAssets, VisualAssetsMap } from '../types/types';
 
 export interface HazardUnitProps {
   HazardUnit: string;
@@ -42,11 +41,11 @@ const HazardUnit: FC<HazardUnitProps> = ({ HazardUnit, Description }) => {
         node: legend.current
       });
     };
-    let assets: VisualAssets | undefined;
+    let assets;
 
     if (mapContext.visualAssets) {
 
-      assets = (mapContext.visualAssets as VisualAssetsMap)[getHazardCodeFromUnitCode(HazardUnit)];
+      assets = mapContext.visualAssets[getHazardCodeFromUnitCode(HazardUnit)];
     }
     console.log('assets', assets);
 
