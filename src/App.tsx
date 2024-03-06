@@ -39,8 +39,8 @@ function App(props: Aoi) {
   const [hazardIntroText, setHazardIntroText] = useState({});
   const [hazardReferences, setHazardReferences] = useState({});
   const [queriesWithResults, setQueriesWithResults] = useState<string[][]>([]);
-  const [groupToTextMap, setGroupToTextMap] = useState({});
-  const [reportTextMap, setReportTextMap] = useState({});
+  const [groupToTextMap, setGroupToTextMap] = useState<Record<string, string>>({});
+  const [reportTextMap, setReportTextMap] = useState<Record<string, string>>({});
   const [otherDataMap, setOtherDataMap] = useState({});
   // const [lidarFeatures, setLidarFeatures] = useState([]);
   // const [aerialFeatures, setAerialFeatures] = useState([]);
@@ -48,7 +48,7 @@ function App(props: Aoi) {
   const [pageError, setError] = useState(false);
 
   const registerProgressItem = useCallback((itemId: string) => {
-    console.log('registerProgressItem:', itemId);
+    console.log('hazardToUnitMap:', hazardToUnitMap);
 
     setTasks(previousTasks => {
       if (previousTasks[itemId]) {

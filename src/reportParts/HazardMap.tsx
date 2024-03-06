@@ -92,7 +92,11 @@ const HazardMap: FC<HazardMapProps> = ({ aoi, queriesWithResults, children }) =>
     });
 
     // make map scale a multiple of 2500
-    await view.when();
+    view.when(() => {
+      const extent = polygon.extent;
+      const expandedExtent = extent.expand(3);
+      view.extent = expandedExtent;
+    });
     const remainder = view.scale % config.scaleMultiple;
     view.scale += config.scaleMultiple - remainder;
 
