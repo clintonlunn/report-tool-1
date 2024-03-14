@@ -57,9 +57,9 @@ export default {
             // development
             //'eec57827136a472dbdb75535889d74b2' :
             //'a2d16377b4b5495ab2aaca8dd14463ba' :
-            'ed35212ca1e040bf9f6f134062056fd4' :
+            '85711d64428b439f822794c75208d1d6' :
             // production & staging
             //'a2d16377b4b5495ab2aaca8dd14463ba'
-            'ed35212ca1e040bf9f6f134062056fd4'
+            '85711d64428b439f822794c75208d1d6'
     }
 };
