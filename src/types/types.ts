@@ -1,9 +1,18 @@
 
+// export interface VisualAssets {
+//     mapImage: string,
+//     renderer: __esri.Renderer,
+//     scale: number,
+//     scaleBarDom: HTMLDivElement
+// }
+
 export interface VisualAssets {
-    mapImage: string,
-    renderer: __esri.Renderer,
-    scale: number,
-    scaleBarDom: HTMLDivElement
+    [key: string]: {
+        renderer: __esri.Renderer;
+        mapImage: string;
+        scale: number;
+        scaleBarDom: HTMLDivElement | null;
+    };
 }
 
 // export type VisualAssetsMap = Record<string, VisualAssets>;
