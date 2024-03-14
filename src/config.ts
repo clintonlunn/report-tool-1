@@ -26,27 +26,27 @@ export default {
     groundshakingHazardCode,
     quaternaryFaultsHazardCode,
     queries: [
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/0', 'FLH'], // Flood Hazard
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/1', 'SGS'], // Shallow Groundwater Susceptibility
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/2', 'LSS'], // Landslide Susceptibility
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/3', 'LSF'], // Landslides
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/4', 'LSC'], // Legacy Landslide Compilation
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/5', 'CAS'], // Caliche Susceptibility
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/6', 'CSS'], // Collapsible Soil Susceptibility
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/7', 'CRS'], // Corrosive Soil and Rock Susceptibility
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/8', 'EFH'], // Earth Fissure Hazard
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/9', 'ERZ'], // Erosion Hazard Zones
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/10', 'EXS'], // Expansive Soil and Rock Susceptibility
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/0', 'FLH'], // Flood Hazard
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/1', 'SGS'], // Shallow Groundwater Susceptibility
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/2', 'LSS'], // Landslide Susceptibility
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/3', 'LSF'], // Landslides
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/4', 'LSC'], // Legacy Landslide Compilation
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/5', 'CAS'], // Caliche Susceptibility
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/6', 'CSS'], // Collapsible Soil Susceptibility
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/7', 'CRS'], // Corrosive Soil and Rock Susceptibility
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/8', 'EFH'], // Earth Fissure Hazard
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/9', 'ERZ'], // Erosion Hazard Zones
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/10', 'EXS'], // Expansive Soil and Rock Susceptibility
         //['Utah_Geologic_Hazards_Working_Database_t1_view/11', 'GSP'], // Ground Subsidence Potential
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/12', 'MKF'], // Karst Features
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/13', 'PES'], // Piping and Erosion Susceptibility
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/14', 'GRS'], // Radon Susceptibility
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/15', 'RFH'], // Rockfall Hazardßß
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/16', 'SDH'], // Salt Tectonics Related Ground Deformation
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/17', 'SBP'], // Shallow Bedrock Potential
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/18', 'SLS'], // Soluble Soil and Rock Susceptibility
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/19', 'WSS'], // Wind-Blown Sand Susceptibility
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/24', 'AAF'], // Alluvial Fan Inventory
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/12', 'MKF'], // Karst Features
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/13', 'PES'], // Piping and Erosion Susceptibility
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/14', 'GRS'], // Radon Susceptibility
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/15', 'RFH'], // Rockfall Hazardßß
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/16', 'SDH'], // Salt Tectonics Related Ground Deformation
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/17', 'SBP'], // Shallow Bedrock Potential
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/18', 'SLS'], // Soluble Soil and Rock Susceptibility
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/19', 'WSS'], // Wind-Blown Sand Susceptibility
+        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/24', 'AAF'], // Alluvial Fan Inventory
         ['https://webmaps.geology.utah.gov/arcgis/rest/services/Hazards/quaternary_faults/MapServer/0', quaternaryFaultsHazardCode], // Quaternary Faults
         ['Utah_Earthquake_Hazards/FeatureServer/2', 'LQS'], // Liquefaction Susceptibility
         ['Utah_Earthquake_Hazards/FeatureServer/3', 'SFR'], // Surface Fault Rupture Hazard Special Study Zone
