@@ -16,7 +16,8 @@ const MapSurround: FC<MapSurroundProps> = ({ mapKey }) => {
 
   useEffect(() => {
     if (scaleBarDom && scaleBarRef.current) {
-      scaleBarRef.current.appendChild(scaleBarDom);
+      scaleBarRef.current.innerHTML = ''; // clear the div
+      scaleBarRef.current.appendChild(scaleBarDom); // append the new scale bar
     }
   }, [scaleBarDom]);
 
