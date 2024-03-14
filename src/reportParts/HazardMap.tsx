@@ -63,9 +63,6 @@ const HazardMap: FC<HazardMapProps> = ({ aoi, queriesWithResults, children }) =>
     };
 
     const polygon = new Polygon(aoi);
-    console.log('AOI YO', aoi);
-
-
     const polylineGraphic = new Graphic({
       geometry: polygon,
       symbol: polylineSymbol
@@ -74,7 +71,6 @@ const HazardMap: FC<HazardMapProps> = ({ aoi, queriesWithResults, children }) =>
     map = new WebMap({
       portalItem: { id: config.webMaps.hazard }
     });
-    console.log('map created', polygon);
 
     const extentClone = polygon.extent.clone();
 
@@ -154,7 +150,7 @@ const HazardMap: FC<HazardMapProps> = ({ aoi, queriesWithResults, children }) =>
       await getExtraScreenshot(config.mapKeys.aerials, config.urls.aerialImageryCenterPoints);
 
       setVisualAssets(newScreenshots);
-      console.log('newScreenshots', newScreenshots);
+      // console.log('newScreenshots', newScreenshots);
 
     };
 

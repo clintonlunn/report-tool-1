@@ -31,7 +31,7 @@ import { Aoi } from './types/types';
 
 
 // export const ProgressContext = createContext();
-console.log(`using web map: ${config.webMaps.hazard}`);
+// console.log(`using web map: ${config.webMaps.hazard}`);
 
 function App(props: Aoi) {
   const [groupToHazardMap, setGroupToHazardMap] = useState({});
@@ -48,7 +48,7 @@ function App(props: Aoi) {
   const [pageError, setError] = useState(false);
 
   const registerProgressItem = useCallback((itemId: string) => {
-    console.log('hazardToUnitMap:', hazardToUnitMap);
+    // console.log('hazardToUnitMap:', hazardToUnitMap);
 
     setTasks(previousTasks => {
       if (previousTasks[itemId]) {
@@ -72,7 +72,7 @@ function App(props: Aoi) {
 
   useEffect(() => {
     const getData = async () => {
-      console.log('App.getData');
+      // console.log('App.getData');
 
       const relatedTablesProgressId = 'related tables'
       registerProgressItem(relatedTablesProgressId);
@@ -90,7 +90,7 @@ function App(props: Aoi) {
         });
       }));
 
-      console.log('allHazardInfos', allHazardInfos);
+      // console.log('allHazardInfos', allHazardInfos);
       const typedHazardInfos = allHazardInfos as { units: string[], hazard: string, url: string }[];
 
       const hazardInfos = typedHazardInfos.filter(({ units }) => units.length > 0);
@@ -172,7 +172,7 @@ function App(props: Aoi) {
       });
     }
   }, [props.polygon, registerProgressItem, setProgressItemAsComplete]);
-  console.log('description', props.description);
+  // console.log('description', props.description);
 
 
   return (!pageError ? <>
