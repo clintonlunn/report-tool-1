@@ -49,7 +49,7 @@ const HazardUnit: FC<HazardUnitProps> = ({ HazardUnit, Description }) => {
 
       assets = mapContext.visualAssets[getHazardCodeFromUnitCode(HazardUnit)];
     }
-    console.log('assets', assets);
+    // console.log('assets', assets);
 
 
     if (!hasLegend && assets && assets.renderer) {

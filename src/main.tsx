@@ -16,7 +16,7 @@ const init = (aoi: Aoi) => {
 const aoi = localStorage.getItem('aoi')
 if (!aoi) {
   import('./testData.json').then((aoi) => {
-    console.log('using test data', aoi.default)
+    // console.log('using test data', aoi.default)
     return init(aoi.default)
   })
 } else {

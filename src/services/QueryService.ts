@@ -85,7 +85,7 @@ const retryPolicy = <T>(url: string, outputFormatter: (response: JsonResponse) =
 }
 
 export const queryUnitsAsync = async (meta: string[], aoi: AreaOfInterest) => {
-    console.log('QueryService.queryUnitsAsync');
+    // console.log('QueryService.queryUnitsAsync');
 
     let [url, hazard] = meta
 
@@ -131,7 +131,7 @@ const queryTable = async (url: string, where: string, outFields: string, orderBy
 };
 
 export const queryHazardUnitTableAsync = (units: Units) => {
-    console.log('QueryService.queryHazardUnitTableAsync');
+    // console.log('QueryService.queryHazardUnitTableAsync');
 
     const where = `HazardUnit IN ('${units.join('\',\'')}')`;
     const outFields = 'HazardName,HazardUnit,HowToUse,Description,UnitName';
@@ -140,7 +140,7 @@ export const queryHazardUnitTableAsync = (units: Units) => {
 };
 
 export const queryReferenceTableAsync = (units: Units) => {
-    console.log('QueryService.queryReferenceTableAsync');
+    // console.log('QueryService.queryReferenceTableAsync');
 
     units = getDistinctHazardCodesFromUnits(units);
     const where = `Hazard IN ('${units.join('\',\'')}')`;
@@ -150,7 +150,7 @@ export const queryReferenceTableAsync = (units: Units) => {
 };
 
 export const queryIntroTextAsync = (units: Units) => {
-    console.log('QueryService.queryIntroTextAsync');
+    // console.log('QueryService.queryIntroTextAsync');
 
     units = getDistinctHazardCodesFromUnits(units);
     const where = `Hazard IN ('${units.join('\',\'')}')`;
@@ -160,7 +160,7 @@ export const queryIntroTextAsync = (units: Units) => {
 };
 
 export const queryGroupingAsync = (units: Units) => {
-    console.log('QueryService.queryGroupingAsync');
+    // console.log('QueryService.queryGroupingAsync');
 
     units = getDistinctHazardCodesFromUnits(units);
     const where = `HazardCode IN ('${units.join('\',\'')}')`;
@@ -170,7 +170,7 @@ export const queryGroupingAsync = (units: Units) => {
 };
 
 export const queryGroupTextAsync = (groups: Groups) => {
-    console.log('QueryService.queryGroupTextAsync');
+    // console.log('QueryService.queryGroupTextAsync');
 
     const where = `HazardGroup IN ('${groups.join('\',\'')}')`;
     const outFields = 'HazardGroup,Text';
@@ -181,7 +181,7 @@ export const queryGroupTextAsync = (groups: Groups) => {
 };
 
 export const queryReportTextTableAsync = () => {
-    console.log('QueryService.queryReportTextTableAsync');
+    // console.log('QueryService.queryReportTextTableAsync');
 
     const where = '1=1';
     const outFields = 'Section,Text';
@@ -190,12 +190,12 @@ export const queryReportTextTableAsync = () => {
 };
 
 export const queryOtherDataTableAsync = async () => {
-    console.log('QueryService.queryOtherDataTable');
+    // console.log('QueryService.queryOtherDataTable');
 
     const where = '1=1';
     const outFields = 'Data,Introduction,HowToUse,References_';
 
-    console.log('asdf', await queryTable(config.urls.otherDataTable, where, outFields));
+    // console.log('asdf', await queryTable(config.urls.otherDataTable, where, outFields));
 
 
     return queryTable(config.urls.otherDataTable, where, outFields);
