@@ -21,8 +21,6 @@ const HazardUnit: FC<HazardUnitProps> = ({ HazardUnit, Description }) => {
 
   useEffect(() => {
     const buildLegend = async (renderer: any) => {
-      // console.log('buildLegend', renderer);
-
       setHasLegend(true);
 
       // const { symbolUtils } = await getModules();
@@ -30,6 +28,10 @@ const HazardUnit: FC<HazardUnitProps> = ({ HazardUnit, Description }) => {
 
       if (renderer.type === 'unique-value') {
         renderers = renderer.uniqueValueInfos.filter((info: any) => info.value === HazardUnit);
+      }
+
+      if (renderers.type = 'simple') {
+        renderers = [renderer];
       }
 
       if (renderers.length !== 1) {
