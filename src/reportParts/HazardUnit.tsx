@@ -30,7 +30,7 @@ const HazardUnit: FC<HazardUnitProps> = ({ HazardUnit, Description }) => {
         renderers = renderer.uniqueValueInfos.filter((info: any) => info.value === HazardUnit);
       }
 
-      if (renderers.type = 'simple') {
+      if (renderer.type === 'simple') {
         renderers = [renderer];
       }
 
