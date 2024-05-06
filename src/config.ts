@@ -26,7 +26,7 @@ export default {
     groundshakingHazardCode,
     quaternaryFaultsHazardCode,
     queries: [
-        ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/0', 'FLH'], // Flood Hazard
+        //['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/0', 'FLH'], // Flood Hazard
         ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/1', 'SGS'], // Shallow Groundwater Susceptibility
         ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/2', 'LSS'], // Landslide Susceptibility
         ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/3', 'LSF'], // Landslides
