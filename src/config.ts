@@ -1,5 +1,6 @@
 const baseUrl = 'https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services';
-const supplementalData = `${baseUrl}/Utah_Geological_Hazards_Supplemental_Data_t1_view/FeatureServer`;
+const supplementalData = 'https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/Utah_Geological_Hazards_Supplemental_Data25July24view/FeatureServer',
+//const supplementalData = `${baseUrl}/Utah_Geological_Hazards_Supplemental_Data_t1_view/FeatureServer`;
 const groundshakingHazardCode = 'EGS';
 const quaternaryFaultsHazardCode = 'QFF';
 export default {
@@ -19,7 +20,8 @@ export default {
         hazardUnitTextTable: `${baseUrl}/Report_Tables_t1_view/FeatureServer/4`,
         imageAgenciesTable: `${baseUrl}/Report_Tables_t1_view/FeatureServer/5`,
         otherDataTable: `${baseUrl}/Report_Tables_t1_view/FeatureServer/7`,
-        reportTextTable: `${baseUrl}/Report_Tables_t1_view/FeatureServer/8`,
+        reportTextTable: '${baseUrl}/ReportTables25July24view/FeatureServer',
+        //reportTextTable: `${baseUrl}/Report_Tables_t1_view/FeatureServer/8`,
         lidarExtents: `${supplementalData}/2`,
         aerialImageryCenterPoints: `${supplementalData}/3`
     },
