@@ -1,5 +1,5 @@
 const baseUrl = 'https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services';
-const supplementalData = 'https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/Utah_Geological_Hazards_Supplemental_Data25July24view/FeatureServer',
+const supplementalData = 'https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/Utah_Geological_Hazards_Supplemental_Data25July24view/FeatureServer';
 //const supplementalData = `${baseUrl}/Utah_Geological_Hazards_Supplemental_Data_t1_view/FeatureServer`;
 const groundshakingHazardCode = 'EGS';
 const quaternaryFaultsHazardCode = 'QFF';
@@ -49,7 +49,8 @@ export default {
         ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/18', 'SLS'], // Soluble Soil and Rock Susceptibility
         ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/19', 'WSS'], // Wind-Blown Sand Susceptibility
         ['Utah_Geologic_Hazards_Working_Database_t1_view/FeatureServer/24', 'AAF'], // Alluvial Fan Inventory
-        ['https://webmaps.geology.utah.gov/arcgis/rest/services/Hazards/quaternary_faults/MapServer/0', quaternaryFaultsHazardCode], // Quaternary Faults
+        ['https://webmaps.geology.utah.gov/arcgis/rest/services/Hazards/quaternary_faults_with_labels_25July24/MapServer', quaternaryFaultsHazardCode], // Quaternary Faults Test
+       // ['https://webmaps.geology.utah.gov/arcgis/rest/services/Hazards/quaternary_faults/MapServer/0', quaternaryFaultsHazardCode], // Quaternary Faults
         ['Utah_Earthquake_Hazards/FeatureServer/2', 'LQS'], // Liquefaction Susceptibility
         ['Utah_Earthquake_Hazards/FeatureServer/3', 'SFR'], // Surface Fault Rupture Hazard Special Study Zone
         ['Utah_Earthquake_Hazards/FeatureServer/5', groundshakingHazardCode] // Groundshaking Polygons
